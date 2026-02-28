@@ -1,0 +1,28 @@
+<div class="caja">
+    <h3>📝 Registro de Sesión</h3>
+    <input type="text" id="estudiante" placeholder="Nombre de la niña">
+    <select id="sesion">
+        <option>Sesión 1: Exploración</option>
+        <option>Sesión 2: Aplicación</option>
+        <option>Sesión 3: Creación</option>
+    </select>
+    <input type="number" id="nota" placeholder="Nota (0-20)">
+    <button onclick="enviarADatos()">Guardar en el Libro Mágico</button>
+</div>
+
+<script>
+function enviarADatos() {
+    const urlScript = "TU_URL_DE_GOOGLE_APPS_SCRIPT_AQUÍ";
+    const payload = {
+        estudiante: document.getElementById('estudiante').value,
+        sesion: document.getElementById('sesion').value,
+        nota: document.getElementById('nota').value,
+        comentario: "Sigue mejorando"
+    };
+
+    fetch(urlScript, {
+        method: 'POST',
+        body: JSON.stringify(payload)
+    }).then(() => alert("¡Nota enviada a la nube!"));
+}
+</script>
